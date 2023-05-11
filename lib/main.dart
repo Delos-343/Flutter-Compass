@@ -37,7 +37,28 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.orange,
       ),
-      home: Scaffold(),
+      home: Scaffold(
+        body: Builder(builder: (context) {
+          if(_hasPermissions) {
+            return _buildCompass();
+          } else {
+            return _buildPermissionSheet();
+          }
+        }),
+      ),
     );
   }
+}
+
+// Widget to build the permission sheet
+Widget _buildPermissionSheet() {
+  return Center(
+    child: ElevatedButton(
+      child: const Text('Requesting Permission')),
+      onPressed: () {
+      Permission.locationWhenInUse.request().then((value) {
+        _fetchPermissionStatus();
+      });
+    },
+  );
 }
