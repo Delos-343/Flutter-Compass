@@ -33,7 +33,12 @@ class NeuCircle extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [],
+          colors: [
+            Colors.blue.shade500,
+            Colors.blue.shade600,
+            Colors.blue.shade700,
+            Colors.blue.shade800,
+          ],
         ),
       ),
     );
