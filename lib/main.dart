@@ -50,14 +50,29 @@ class _MyAppState extends State<MyApp> {
 
   // Widget to build the compass
   Widget _buildCompass() {
-    return Center(
-      child: Container(
-        padding: EdgeInsets.all(25),
-        child: Image.asset(
-          'assets/nautical_compass.png',
-          color: Colors.black,
-        )
-      ),
+return StreamBuilder<CompassEvent>(
+      stream: FlutterCompass.events,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Error reading heading: ${snapshot.error}');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        double? direction = snapshot.data!.heading;
+
+        // if direction is null, then device does not support this sensor
+        // show error message
+        if (direction == null) {
+          return const Center(
+            child: Text("No sensors available."),
+          );
+        }
+      },
     );
   }
 
