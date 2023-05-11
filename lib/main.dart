@@ -36,13 +36,13 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.orange,
       ),
       home: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         body: Builder(builder: (context) {
-          if(_hasPermissions) {
+          // if(_hasPermissions) {
             return _buildCompass();
-          } else {
-            return _buildPermissionSheet();
-          }
+          // } else {
+          //  return _buildPermissionSheet();
+          //}
         }),
       ),
     );
