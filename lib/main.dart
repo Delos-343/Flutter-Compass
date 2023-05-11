@@ -4,8 +4,16 @@ import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
 
   bool _hasPermissions = false;
 
@@ -14,16 +22,6 @@ class MyApp extends StatelessWidget {
     super.initState();
     
     _fetchPermissionStatus();
-  }
-
-  void _fetchPermissionStatus() {
-    Permission.locationWhenInUse.status.then((value) {
-      if(mounted) {
-        setState(() {
-          _hasPermissions = (status == PermissionStatus.granted);
-        });
-      }
-    });
   }
 
   // This widget is the root of your application.
@@ -48,24 +46,34 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
 
-// Widget to build the compass
-Widget _buildCompass() {
-  return Container(
-    child: const Text('Hello Hadron!'),
-  )
-}
+  // Widget to build the compass
+  Widget _buildCompass() {
+    return Container(
+      child: const Text('Hello Hadron!'),
+    )
+  }
 
-// Widget to build the permission sheet
-Widget _buildPermissionSheet() {
-  return Center(
-    child: ElevatedButton(
-      child: const Text('Requesting Permission')),
-      onPressed: () {
-      Permission.locationWhenInUse.request().then((value) {
-        _fetchPermissionStatus();
-      });
-    },
-  );
+  // Widget to build the permission sheet
+  Widget _buildPermissionSheet() {
+    return Center(
+      child: ElevatedButton(
+        child: const Text('Requesting Permission')),
+        onPressed: () {
+        Permission.locationWhenInUse.request().then((ignored) {
+          _fetchPermissionStatus();
+        });
+      },
+    );
+  }
+
+  void _fetchPermissionStatus() {
+    Permission.locationWhenInUse.status.then((status) {
+      if(mounted) {
+        setState(() {
+          _hasPermissions = (status == PermissionStatus.granted);
+        });
+      }
+    });
+  }
 }
