@@ -9,6 +9,11 @@ class NeuCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      alignment: Alignment.center,
+      margin: EdgeInsets.all(40),
+      decoration: BoxDecoration(),
+    );
   }
 }
