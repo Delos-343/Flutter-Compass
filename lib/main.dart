@@ -52,6 +52,7 @@ class _MyAppState extends State<MyApp> {
   Widget _buildCompass() {
     return Center(
       child: Container(
+        padding: EdgeInsets.all(25),
         child: Image.asset(
           'assets/nautical_compass.png',
           color: Colors.black,
