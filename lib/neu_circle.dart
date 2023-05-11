@@ -30,6 +30,11 @@ class NeuCircle extends StatelessWidget {
             spreadRadius: 1.0
           ),
         ],
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [],
+        ),
       ),
     );
   }
