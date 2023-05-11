@@ -51,19 +51,20 @@ class _MyAppState extends State<MyApp> {
   Widget _buildCompass() {
     return Container(
       child: const Text('Hello Hadron!'),
-    )
+    );
   }
 
   // Widget to build the permission sheet
   Widget _buildPermissionSheet() {
     return Center(
       child: ElevatedButton(
-        child: const Text('Requesting Permission')),
+        child: const Text('Requesting Permission...'),
         onPressed: () {
-        Permission.locationWhenInUse.request().then((ignored) {
-          _fetchPermissionStatus();
-        });
-      },
+          Permission.locationWhenInUse.request().then((ignored) {
+            _fetchPermissionStatus();
+          });
+        },
+      ),
     );
   }
 
