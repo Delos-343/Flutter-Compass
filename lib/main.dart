@@ -50,8 +50,13 @@ class _MyAppState extends State<MyApp> {
 
   // Widget to build the compass
   Widget _buildCompass() {
-    return Container(
-      child: const Text('Hello Hadron!'),
+    return Center(
+      child: Container(
+        child: Image.asset(
+          'assets/nautical_compass.png',
+          color: Colors.black,
+        )
+      ),
     );
   }
 
