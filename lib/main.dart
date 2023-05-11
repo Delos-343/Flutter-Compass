@@ -7,6 +7,25 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  bool _hasPermissions = false;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    _fetchPermissionStatus();
+  }
+
+  void _fetchPermissionStatus() {
+    Permission.locationWhenInUse.status.then((value) {
+      if(mounted) {
+        setState(() {
+          _hasPermissions = (status == PermissionStatus.granted);
+        });
+      }
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
