@@ -3,7 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class NeuCircle extends StatelessWidget {
-  const NeuCircle({super.key});
+  final child;
+  const NeuCircle({
+      super.key,
+      required this.child
+    });
 
   @override
   Widget build(BuildContext context) {
