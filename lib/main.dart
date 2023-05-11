@@ -50,6 +50,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Widget to build the compass
+Widget _buildCompass() {
+  return Container(
+    child: const Text('Hello Hadron!'),
+  )
+}
+
 // Widget to build the permission sheet
 Widget _buildPermissionSheet() {
   return Center(
