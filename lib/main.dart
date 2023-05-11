@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.orange,
       ),
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[100],
         body: Builder(builder: (context) {
           // if(_hasPermissions) {
             return _buildCompass();

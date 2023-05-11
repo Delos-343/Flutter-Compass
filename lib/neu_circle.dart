@@ -13,7 +13,24 @@ class NeuCircle extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       alignment: Alignment.center,
       margin: EdgeInsets.all(40),
-      decoration: BoxDecoration(),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.grey[100],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blue.shade800,
+            offset: Offset(4.0, 4.0),
+            blurRadius: 15.0,
+            spreadRadius: 1.0
+          ),
+          BoxShadow(
+            color: Colors.blue.shade500,
+            offset: Offset(-4.0, -4.0),
+            blurRadius: 15.0,
+            spreadRadius: 1.0
+          ),
+        ],
+      ),
     );
   }
 }
