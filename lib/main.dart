@@ -70,10 +70,8 @@ class _MyAppState extends State<MyApp> {
 
   void _fetchPermissionStatus() {
     Permission.locationWhenInUse.status.then((status) {
-      if(mounted) {
-        setState(() {
-          _hasPermissions = (status == PermissionStatus.granted);
-        });
+      if (mounted) {
+        setState(() => _hasPermissions = status == PermissionStatus.granted);
       }
     });
   }
